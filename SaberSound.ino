@@ -3,8 +3,10 @@
 #include <SPI.h>
 #include <SD.h>
 
-#define humFreq 100 //93.57
-#define multiplier 10
+#define HUMFREQ 100 //93.57
+#define MULTIPLIER 200
+#define MIN 1500
+#define MAX 4095
 
 // GUItool: begin automatically generated code
 AudioSynthWaveformSine   sine2;          //xy=154,221
@@ -93,8 +95,7 @@ void loop() {
   x = abs(analogRead(A0) - 4095);
   y = abs(analogRead(A1) - 4095);
   z = abs(analogRead(A2) - 4095);
-  average = (x + y + z) / 3;
-  waveform2.frequency(average + 4000);
-//  change = ((float) average / 4095.0) * multiplier;
-//  waveform2.frequency(humFreq + change);
+  average = (y + z) / 2;
+  change = map(constrain(average, MIN, MAX), MIN, MAX, 0, MULTIPLIER);
+  waveform2.frequency(HUMFREQ + change);
 }
