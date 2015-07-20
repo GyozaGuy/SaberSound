@@ -90,9 +90,9 @@ void setup() {
 }
 
 void loop() {
-  x = abs(analogRead(A0)) - 4095;
-  y = abs(analogRead(A1)) - 4095;
-  z = abs(analogRead(A2)) - 4095;
+  x = abs(analogRead(A0) - 4095);
+  y = abs(analogRead(A1) - 4095);
+  z = abs(analogRead(A2) - 4095);
   average = (x + y + z) / 3;
   waveform2.frequency(average + 4000);
 //  change = ((float) average / 4095.0) * multiplier;
