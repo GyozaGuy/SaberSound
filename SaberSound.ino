@@ -3,7 +3,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-#define HUMFREQ 100 //93.57
+#define HUMFREQ 93.57
 #define MULTIPLIER 200
 #define MIN 1500
 #define MAX 4095
@@ -63,7 +63,7 @@ void setup() {
   waveform1.pulseWidth(0.5);  // 50%
 
   waveform2.amplitude(1.0);
-  waveform2.frequency(humFreq);
+  waveform2.frequency(HUMFREQ);
   waveform2.pulseWidth(0.33);
 
 //  noise1.amplitude(0.02);
