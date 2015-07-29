@@ -4,7 +4,7 @@
 #include <SD.h>
 
 #define HUMFREQ 93.57
-#define MULTIPLIER 200
+#define MULTIPLIER 50
 #define MIN 1500
 #define MAX 4095
 
