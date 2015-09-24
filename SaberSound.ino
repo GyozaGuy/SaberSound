@@ -72,7 +72,7 @@ void setup() {
   mixer1.gain(1, 0.15);		// 50% gain
 //  mixer1.gain(2, 0.5);		// Passthrough
   mixer1.gain(2, 0.6);
-  
+
   mixer2.gain(0, 0.95);
   mixer2.gain(1, 0.0);
 
@@ -95,7 +95,7 @@ void loop() {
   x = abs(analogRead(A0) - 4095);
   y = abs(analogRead(A1) - 4095);
   z = abs(analogRead(A2) - 4095);
-  average = (y + z) / 2;
+  average = (x + y + z) / 3;
   change = map(constrain(average, MIN, MAX), MIN, MAX, 0, MULTIPLIER);
   waveform2.frequency(HUMFREQ + change);
 }
