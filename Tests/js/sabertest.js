@@ -32,6 +32,7 @@ function updateFrequency() {
   min = constraints[0];
   max = constraints[1];
   change = map(constrain(average, min, max), min, max, 0, multiplier);
+  $('#average').text(average);
   $('#freq').text(humfreq + change);
 }
 
