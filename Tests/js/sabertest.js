@@ -1,22 +1,20 @@
 // Create sliders
-$('#x').slider({});
-$('#y').slider({});
-$('#z').slider({});
+var xslider = new Slider('#x');
+var yslider = new Slider('#y');
+var zslider = new Slider('#z');
+var cslider = new Slider('#constraintslider');
 
 // Setup listeners
-$('#x').change(function() {
+xslider.on('slide', function(slideEvt) {
   updateFrequency();
 });
-$('#y').change(function() {
+yslider.on('slide', function(slideEvt) {
   updateFrequency();
 });
-$('#z').change(function() {
+zslider.on('slide', function(slideEvt) {
   updateFrequency();
 });
-
-// Setup constraintslider because it seems to work differently than the others
-var slider = new Slider('#constraintslider');
-slider.on('slide', function(slideEvt) {
+cslider.on('slide', function(slideEvt) {
   updateFrequency();
 });
 
@@ -24,11 +22,11 @@ slider.on('slide', function(slideEvt) {
 function updateFrequency() {
   humfreq = parseFloat($('#humfreq').val());
   multiplier = parseInt($('#multiplier').val());
-  x = $('#x').slider().slider('getValue');
-  y = $('#y').slider().slider('getValue');
-  z = $('#z').slider().slider('getValue');
+  x = xslider.getValue();
+  y = yslider.getValue();
+  z = zslider.getValue();
   average = (x + y + z) / 3;
-  constraints = slider.getValue();
+  constraints = cslider.getValue();
   min = constraints[0];
   max = constraints[1];
   change = map(constrain(average, min, max), min, max, 0, multiplier);
