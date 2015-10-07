@@ -5,7 +5,7 @@
 
 #define HUMFREQ 93.57
 #define MULTIPLIER 100
-#define MIN 1000
+#define MIN 0
 #define MAX 4095
 
 // GUItool: begin automatically generated code
