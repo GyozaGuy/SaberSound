@@ -4,8 +4,8 @@
 #include <SD.h>
 
 #define HUMFREQ 93.57
-#define MULTIPLIER 50
-#define MIN 2500
+#define MULTIPLIER 500
+#define MIN 1000
 #define MAX 4095
 
 // GUItool: begin automatically generated code
