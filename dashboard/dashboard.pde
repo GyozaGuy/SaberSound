@@ -22,8 +22,9 @@ void draw() {
   //inputX = mouseX;
   //inputY = mouseY;
   //inputZ = (mousePressed) ? size : 0;
+  while (!(myPort.available() > 0));
   parseInput();
-  printArray(inputs);
+  //printArray(inputs);
   inputX = parseInt(inputs[0]);
   inputY = parseInt(inputs[1]);
   inputZ = parseInt(inputs[2]);
@@ -69,7 +70,7 @@ void parseInput() {
   while (myPort.read() != '|') {
     String input = myPort.readStringUntil('$');
     input = split(input, '$')[0];
-    print(input);
+    //print(input);
     inputs = split(input, ',');
   }
 }
