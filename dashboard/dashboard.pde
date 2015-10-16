@@ -28,16 +28,16 @@ void draw() {
   inputX = parseInt(inputs[0]);
   inputY = parseInt(inputs[1]);
   inputZ = parseInt(inputs[2]);
-  
+
   // Calculate values
   x = (int) map(inputX - (4096 / 2), 0, 4096, 0, 255);
   y = (int) map(inputY - (4096 / 2), 0, 4096, 0, 255);
   z = (int) map(inputZ - (4096 / 2), 0, 4096, 0, 255);
-  
+
   // Draw background
   fill(#afaaff);
   rect(0, 0, size, size);
-  
+
   // Draw X and Y
   fill(#ffffff);
   rect(padding, padding, 255, 255);
@@ -49,12 +49,12 @@ void draw() {
   text("Y", 127 + padding - 8, 255 + padding - 2);
   fill(#ffffff);
   ellipse(x + padding + 128, y + padding + 128, padding, padding);
-  
+
   // Draw Z
   rect(padding + 255 + padding, padding, 31, 255);
   fill(#00ff00);
   rect(padding + 255 + padding, 255 / 2 + padding, 31, z * -1);
-  
+
   // Display raw values
   offsetX = padding * 3 + 255 + 31;
   fill(#0000ff);
