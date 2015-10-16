@@ -2,6 +2,7 @@
 #include <Wire.h>
 #include <SPI.h>
 #include <SD.h>
+#include <SerialFlash.h>
 
 #define HUMFREQ 93.57
 #define MULTIPLIER 100
@@ -35,13 +36,16 @@ AudioConnection          patchCord9(waveform2, 0, mixer1, 2);
 int16_t x;
 int16_t y;
 int16_t z;
+uint16_t inputX;
+uint16_t inputY;
+uint16_t inputZ;
 int32_t average;
 float change;
 
 void setup() {
-//  Serial.begin(115200);
-//  while (!Serial);
-//  delay(200);
+  Serial.begin(115200);
+  while (!Serial);
+  delay(200);
 
 //  Serial.print("Commence noise making");
 
@@ -92,9 +96,19 @@ void setup() {
 }
 
 void loop() {
-  x = abs(analogRead(A0) - 4095);
-  y = abs(analogRead(A1) - 4095);
-  z = abs(analogRead(A2) - 4095);
+  inputX = analogRead(A0);
+  inputY = analogRead(A1);
+  inputZ = analogRead(A2);
+  Serial.print("|");
+  Serial.print(inputX, DEC);
+  Serial.print(",");
+  Serial.print(inputY, DEC);
+  Serial.print(",");
+  Serial.print(inputZ, DEC);
+  Serial.print("$");
+  x = abs(inputX - 4095);
+  y = abs(inputY - 4095);
+  z = abs(inputZ - 4095);
   average = (x + y + z) / 3;
   change = map(constrain(average, MIN, MAX), MIN, MAX, 0, MULTIPLIER);
   waveform2.frequency(HUMFREQ + change);
